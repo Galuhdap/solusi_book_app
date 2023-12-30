@@ -7,7 +7,8 @@ class FieldAddDataWidget extends StatelessWidget {
   final Function()? function;
   final TextInputType? typeInput;
   final int? maxLine;
- final EdgeInsetsGeometry? contentPadding;
+  final bool? enabled;
+  final EdgeInsetsGeometry? contentPadding;
   const FieldAddDataWidget(
       {super.key,
       required this.title,
@@ -17,7 +18,7 @@ class FieldAddDataWidget extends StatelessWidget {
       this.sufixIcon,
       this.function,
       this.maxLine,
-      });
+      this.enabled});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,7 @@ class FieldAddDataWidget extends StatelessWidget {
             height: 5,
           ),
           TextFormField(
+            enabled: enabled,
             controller: textController,
             keyboardType: TextInputType.multiline,
             maxLines: maxLine,
@@ -58,7 +60,10 @@ class FieldAddDataWidget extends StatelessWidget {
               contentPadding: contentPadding,
               suffixIcon: Icon(sufixIcon),
             ),
-            style: TextStyle(fontSize: 15),
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black,
+            ),
             cursorColor: Colors.black.withOpacity(0.6),
             onTap: function,
           ),

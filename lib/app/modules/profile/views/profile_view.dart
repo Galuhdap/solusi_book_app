@@ -19,33 +19,23 @@ class ProfileView extends GetView<ProfileController> {
         padding: const EdgeInsets.only(left: 25, right: 25),
         child: Column(
           children: [
-    //         Padding(
-    //   padding: const EdgeInsets.only(left: 35, bottom: 10, top: 10),
-    //   child: Row(
-    //     children: [
-    //       Icon(
-    //         icons,
-    //         size: 40,
-    //         color: Colors.blue,
-    //       ),
-    //       SizedBox(
-    //         width: 18,
-    //       ),
-    //       Text(
-    //         txt,
-    //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-    //       ),
-    //     ],
-    //   ),
-    // ),
+            FieldAddDataWidget(
+              title: "Nama",
+              enabled: false,
+              textController: profileController.name,
+              typeInput: TextInputType.text,
+              contentPadding: EdgeInsets.only(left: 13),
+            ),
             FieldAddDataWidget(
               title: "Email",
+              enabled: false,
               textController: profileController.email,
               typeInput: TextInputType.text,
               contentPadding: EdgeInsets.only(left: 13),
             ),
             FieldAddDataWidget(
               title: "Email Verified At",
+              enabled: false,
               textController: profileController.email,
               typeInput: TextInputType.text,
               contentPadding: EdgeInsets.only(left: 13),
@@ -54,7 +44,9 @@ class ProfileView extends GetView<ProfileController> {
               height: 15,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await profileController.logout();
+              },
               style: ElevatedButton.styleFrom(
                   elevation: 4,
                   backgroundColor: Colors.red,

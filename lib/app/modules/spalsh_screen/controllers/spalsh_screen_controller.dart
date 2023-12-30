@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../../routes/app_pages.dart';
+import '../../login/views/login_view.dart';
 
 class SpalshScreenController extends GetxController {
   //TODO: Implement SpalshScreenController
+  final storage = GetStorage();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -11,13 +15,18 @@ class SpalshScreenController extends GetxController {
 
   @override
   void onReady() {
+    // TODO: implement onReady
     super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
+    Future.delayed(
+      Duration(seconds: 2),
+      () async {
+        if (storage.read('key') != '' && storage.read('key') != null) {
+          Get.offAllNamed(Routes.BOTTOM_NAVIGATION);
+        } else {
+          Get.offAllNamed(Routes.LOGIN);
+        }
+      },
+    );
   }
-
-  void increment() => count.value++;
 }

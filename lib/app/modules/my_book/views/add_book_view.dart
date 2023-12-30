@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../widget/fieldData_widget.dart';
-import '../../../widget/inputField_widget.dart';
 import '../controllers/my_book_controller.dart';
 
 class AddBookView extends GetView {
@@ -110,4 +109,3 @@ class AddBookView extends GetView {
     );
   }
 }
-

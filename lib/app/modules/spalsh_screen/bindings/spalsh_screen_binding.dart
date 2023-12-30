@@ -5,8 +5,6 @@ import '../controllers/spalsh_screen_controller.dart';
 class SpalshScreenBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SpalshScreenController>(
-      () => SpalshScreenController(),
-    );
+    Get.put(SpalshScreenController());
   }
 }
