@@ -10,9 +10,9 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    name = TextEditingController();
-    email = TextEditingController();
-    verifEmail = TextEditingController();
+    name = TextEditingController(text: 'Galuh');
+    email = TextEditingController(text: 'galuh@gmail.com');
+    verifEmail = TextEditingController(text: '009933990');
    
   }
 
