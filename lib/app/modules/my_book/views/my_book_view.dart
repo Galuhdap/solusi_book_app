@@ -11,6 +11,7 @@ import '../../../routes/app_pages.dart';
 import '../../../widget/listBook_widget.dart';
 import '../../detail_book/controllers/detail_book_controller.dart';
 import '../controllers/my_book_controller.dart';
+import 'add_book_view.dart';
 
 class MyBookView extends GetView<MyBookController> {
   const MyBookView({Key? key}) : super(key: key);
@@ -38,10 +39,16 @@ class MyBookView extends GetView<MyBookController> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Icon(
-              Icons.add_circle_outline_outlined,
-              size: 30,
-              color: Colors.white,
+            child: IconButton(
+              onPressed: () {
+                // print('asdas');
+                Get.to(AddBookView());
+              },
+              icon: Icon(
+                Icons.add_circle_outline_outlined,
+                size: 30,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

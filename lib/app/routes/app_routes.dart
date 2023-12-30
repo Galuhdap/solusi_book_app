@@ -23,4 +23,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const DETAIL_BOOK = '/detail-book';
   static const MY_BOOK = '/my-book';
+  
 }
