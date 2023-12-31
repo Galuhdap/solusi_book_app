@@ -9,6 +9,7 @@ class DetailBookView extends GetView<DetailBookController> {
   const DetailBookView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Obx(() {
         final detailBook = controller.books.value;
@@ -17,8 +18,8 @@ class DetailBookView extends GetView<DetailBookController> {
             Stack(
               children: [
                 Container(
-                  width: 428,
-                  height: 304,
+                  width: double.infinity,
+                  height: size.height * 0.4,
                   decoration: BoxDecoration(
                     color: Color(0xff171b36),
                     borderRadius: BorderRadius.only(
@@ -55,11 +56,10 @@ class DetailBookView extends GetView<DetailBookController> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.only(left: 40, right: 40, top: 10),
+                            const EdgeInsets.only(left: 40, right: 40, top: 13),
                         child: Container(
                           width: double.infinity,
-                          height: 150,
-                          // color: Colors.green,
+                          height: size.height / 7,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -91,10 +91,10 @@ class DetailBookView extends GetView<DetailBookController> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 260, left: 40, right: 40),
+                  padding: const EdgeInsets.only(top: 255, left: 40, right: 40),
                   child: Container(
                     width: double.infinity,
-                    height: 80,
+                    height: size.height / 9,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
@@ -147,29 +147,33 @@ class DetailBookView extends GetView<DetailBookController> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40, top: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "About The Book",
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
+              child: Container(
+                width: double.infinity,
+                height: size.width / 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "About The Book",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "${detailBook.description}",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                    SizedBox(
+                      height: 10,
                     ),
-                    // maxLines: 5,
-                  ),
-                ],
+                    Text(
+                      "${detailBook.description}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      maxLines: 5,
+                    ),
+                  ],
+                ),
               ),
             )
           ],

@@ -10,13 +10,19 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     final ProfileController profileController = Get.put(ProfileController());
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        title: const Text(
+          'My Profile',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
+        backgroundColor: Color(0xff171b36),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
+        padding: const EdgeInsets.only(left: 25, right: 25, top: 20),
         child: Column(
           children: [
             FieldAddDataWidget(
@@ -36,12 +42,12 @@ class ProfileView extends GetView<ProfileController> {
             FieldAddDataWidget(
               title: "Email Verified At",
               enabled: false,
-              textController: profileController.email,
+              textController: profileController.verifEmail,
               typeInput: TextInputType.text,
               contentPadding: EdgeInsets.only(left: 13),
             ),
             SizedBox(
-              height: 15,
+              height: size.height / 40,
             ),
             ElevatedButton(
               onPressed: () async {
@@ -49,7 +55,7 @@ class ProfileView extends GetView<ProfileController> {
               },
               style: ElevatedButton.styleFrom(
                   elevation: 4,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xff171b36),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),

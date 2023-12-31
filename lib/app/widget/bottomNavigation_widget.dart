@@ -26,19 +26,19 @@ class BottomNavigationView extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: Icon(CupertinoIcons.home),
           title: ("Home"),
-          activeColorPrimary: CupertinoColors.activeBlue,
+          activeColorPrimary: Color(0xff171b36),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
           icon: Icon(Icons.book),
           title: ("My Book"),
-          activeColorPrimary: CupertinoColors.activeBlue,
+          activeColorPrimary: Color(0xff171b36),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
           icon: Icon(Icons.account_circle_outlined),
           title: ("Profile"),
-          activeColorPrimary: CupertinoColors.activeBlue,
+          activeColorPrimary: Color(0xff171b36),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
       ];

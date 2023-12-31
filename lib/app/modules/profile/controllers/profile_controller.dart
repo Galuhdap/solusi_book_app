@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 
 import '../../../data/models/user_model.dart';
 import '../../../data/service/api_service.dart';
@@ -35,7 +36,8 @@ class ProfileController extends GetxController {
       print(response.data);
       name.text = userModel.value.name ?? '';
       email.text = userModel.value.email ?? '';
-      verifEmail.text = userModel.value.name ?? '';
+      verifEmail.text = DateFormat('EEEE, dd MMMM yyyy', 'id_ID')
+          .format(DateTime.parse(userModel.value.emailVerifiedAt.toString()));
     } catch (error) {
       print("Error: $error");
     }

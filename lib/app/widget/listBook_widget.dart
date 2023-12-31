@@ -4,16 +4,24 @@ class ListBookWidget extends StatelessWidget {
   final String? title;
   final String? author;
   final String? date;
+  final String? view;
   final Function()? function;
-  const ListBookWidget(
-      {super.key,
-      required this.title,
-      required this.author,
-      required this.date,
-      required this.function});
+  final Widget? contWidget;
+  final Color? color;
+  const ListBookWidget({
+    super.key,
+    required this.title,
+    required this.author,
+    required this.date,
+    required this.view,
+    required this.function,
+    required this.color,
+    this.contWidget,
+  });
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Container(
@@ -66,27 +74,35 @@ class ListBookWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: function,
-                child: Container(
-                  width: 78,
-                  height: 31,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Color(0xffde7773),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "View Detail",
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+              Column(
+                children: [
+                  InkWell(
+                    onTap: function,
+                    child: Container(
+                      width: size.width / 5,
+                      height: size.height / 25,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: color,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "${view}",
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  if (contWidget != null) contWidget!,
+                ],
+              )
             ],
           ),
         ),

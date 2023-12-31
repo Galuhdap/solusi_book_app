@@ -1,5 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+import '../../../routes/app_pages.dart';
 
 class RegisterController extends GetxController {
   //TODO: Implement RegisterController
@@ -8,6 +13,55 @@ class RegisterController extends GetxController {
   late TextEditingController email = TextEditingController();
   late TextEditingController password = TextEditingController();
   late TextEditingController confPassword = TextEditingController();
+
+  Dio dio = Dio();
+  final storage = GetStorage();
+
+  void snackBarError(String msg, BuildContext context) {
+    Alert(
+      context: context,
+      type: AlertType.error,
+      title: msg,
+      buttons: [],
+    ).show();
+  }
+
+  Future register({
+    required String name,
+    required String email,
+    required String password,
+    required String password_confirmation,
+    required BuildContext context,
+  }) async {
+    try {
+      if (name != '' &&
+          email != '' &&
+          password != '' &&
+          password_confirmation != '') {
+        if (email.contains("@")) {
+          final datas = {
+            'name': name,
+            'email': email,
+            'password': password,
+            'password_confirmation': password_confirmation
+          };
+
+          final response = await dio.post(
+              'https://book-crud-service-6dmqxfovfq-et.a.run.app/api/register',
+              data: datas);
+
+          Get.offAllNamed(Routes.LOGIN);
+          // return response.data['token'];
+        } else {
+          snackBarError("Masukan email Valid", context);
+        }
+      } else {
+        snackBarError("Semua data harus diisi", context);
+      }
+    } catch (e) {
+      snackBarError("Error From Server", context);
+    }
+  }
 
   @override
   void onInit() {

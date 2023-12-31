@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sol_book/app/routes/app_pages.dart';
 
 import '../../../widget/inputField_widget.dart';
 import '../controllers/login_controller.dart';
@@ -10,6 +11,8 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -23,7 +26,7 @@ class LoginView extends GetView<LoginController> {
                   scale: 9,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height / 30,
                 ),
                 Text(
                   'LOGIN',
@@ -40,7 +43,7 @@ class LoginView extends GetView<LoginController> {
                   icons: Icons.lock_outline_rounded,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height / 30,
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -52,7 +55,7 @@ class LoginView extends GetView<LoginController> {
                   },
                   style: ElevatedButton.styleFrom(
                       elevation: 4,
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Color(0xff171b36),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -62,6 +65,28 @@ class LoginView extends GetView<LoginController> {
                       'LOGIN',
                       style: TextStyle(
                         color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height / 60,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.REGISTER);
+                  },
+                  child: Container(
+                    width: size.height * 0.1,
+                    height: size.width * 0.1,
+                    child: Center(
+                      child: Text(
+                        'REGISTER',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

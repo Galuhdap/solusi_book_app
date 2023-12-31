@@ -31,7 +31,7 @@ class AddBookView extends GetView {
               FieldAddDataWidget(
                 title: "Nomor ISBN",
                 textController: bookController.isbn,
-                typeInput: TextInputType.text,
+                typeInput: TextInputType.number,
                 contentPadding: EdgeInsets.only(left: 13),
               ),
               FieldAddDataWidget(
@@ -65,7 +65,7 @@ class AddBookView extends GetView {
               FieldAddDataWidget(
                 title: "Page",
                 textController: bookController.page,
-                typeInput: TextInputType.text,
+                typeInput: TextInputType.phone,
                 contentPadding: EdgeInsets.only(left: 13),
               ),
               FieldAddDataWidget(
@@ -85,7 +85,19 @@ class AddBookView extends GetView {
                 height: 10,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await bookController.postBook(
+                      isbn: bookController.isbn.text,
+                      title: bookController.title.text,
+                      subtitle: bookController.subtitle.text,
+                      author: "jiko",
+                      published: bookController.date.toString(),
+                      publisher: bookController.publisher.text,
+                      page: bookController.page.text,
+                      description: bookController.description.text,
+                      website: bookController.website.text);
+                  await bookController.fetchData();
+                },
                 style: ElevatedButton.styleFrom(
                     elevation: 4,
                     backgroundColor: Colors.blue,

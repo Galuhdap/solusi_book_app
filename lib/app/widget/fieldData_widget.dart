@@ -40,7 +40,7 @@ class FieldAddDataWidget extends StatelessWidget {
           TextFormField(
             enabled: enabled,
             controller: textController,
-            keyboardType: TextInputType.multiline,
+            keyboardType: typeInput,
             maxLines: maxLine,
             decoration: InputDecoration(
               prefixIconColor: Colors.black.withOpacity(0.6),
