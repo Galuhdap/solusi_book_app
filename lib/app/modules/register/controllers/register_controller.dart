@@ -17,6 +17,20 @@ class RegisterController extends GetxController {
   Dio dio = Dio();
   final storage = GetStorage();
 
+  RxBool obscureText = false.obs;
+
+  void togglePasswordVisibility() {
+    obscureText.toggle();
+  }
+
+  void snackBar(String msg) {
+    Get.snackbar(
+      "SUUCES",
+      msg,
+      duration: Duration(seconds: 2),
+    );
+  }
+
   void snackBarError(String msg, BuildContext context) {
     Alert(
       context: context,
@@ -49,9 +63,8 @@ class RegisterController extends GetxController {
           final response = await dio.post(
               'https://book-crud-service-6dmqxfovfq-et.a.run.app/api/register',
               data: datas);
-
+          snackBar("Register Berhasil");
           Get.offAllNamed(Routes.LOGIN);
-          // return response.data['token'];
         } else {
           snackBarError("Masukan email Valid", context);
         }
@@ -76,9 +89,5 @@ class RegisterController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    // name.dispose();
-    // email.dispose();
-    // password.dispose();
-    // confPassword.dispose();
   }
 }

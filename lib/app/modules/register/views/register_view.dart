@@ -40,15 +40,41 @@ class RegisterView extends GetView<RegisterController> {
                   hintext: 'Masukan Email',
                   icons: Icons.email_outlined,
                 ),
-                TextFieldWidget(
-                  textContoroller: controller.password,
-                  hintext: 'Masukan Password',
-                  icons: Icons.lock_outline_rounded,
+                Obx(
+                  () => TextFieldWidget(
+                    obscureText: controller.obscureText.value,
+                    textContoroller: controller.password,
+                    hintext: 'Masukan Password',
+                    icons: Icons.lock_outline_rounded,
+                    sufix: GestureDetector(
+                      onTap: () {
+                        controller.togglePasswordVisibility();
+                      },
+                      child: Icon(
+                        controller.obscureText.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
+                  ),
                 ),
-                TextFieldWidget(
-                  textContoroller: controller.confPassword,
-                  hintext: 'Masukan Password Confirmation',
-                  icons: Icons.lock_outline_rounded,
+                Obx(
+                  () => TextFieldWidget(
+                    obscureText: controller.obscureText.value,
+                    textContoroller: controller.confPassword,
+                    hintext: 'Masukan Password Confirmation',
+                    icons: Icons.lock_outline_rounded,
+                    sufix: GestureDetector(
+                      onTap: () {
+                        controller.togglePasswordVisibility();
+                      },
+                      child: Icon(
+                        controller.obscureText.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: size.height / 40,

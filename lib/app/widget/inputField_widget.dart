@@ -3,17 +3,27 @@ import 'package:flutter/material.dart';
 class TextFieldWidget extends StatelessWidget {
   final String? hintext;
   final IconData? icons;
+  final Widget? sufix;
+  final bool? obscureText;
   final TextEditingController? textContoroller;
 
-  TextFieldWidget({super.key, this.hintext, this.icons, this.textContoroller});
+  TextFieldWidget(
+      {super.key,
+      this.hintext,
+      this.icons,
+      this.textContoroller,
+      this.sufix,
+      this.obscureText});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: TextFormField(
+        obscureText: obscureText ?? false,
         controller: textContoroller,
         decoration: InputDecoration(
+          suffixIcon: sufix,
           prefixIcon: Icon(
             icons,
             size: 30,

@@ -17,6 +17,12 @@ class LoginController extends GetxController {
   Dio dio = Dio();
   final storage = GetStorage();
 
+  RxBool obscureText = false.obs;
+
+  void togglePasswordVisibility() {
+    obscureText.toggle();
+  }
+
   void snackBarError(String msg, BuildContext context) {
     Alert(
       context: context,

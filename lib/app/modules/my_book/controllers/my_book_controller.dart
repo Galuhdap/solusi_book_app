@@ -84,10 +84,6 @@ class MyBookController extends GetxController {
     update();
   }
 
-  Future<void> refreshData() async {
-    await fetchData();
-  }
-
   Future postBook({
     required String isbn,
     required String title,
@@ -114,7 +110,15 @@ class MyBookController extends GetxController {
       await _apiService.dio.post("/api/books/add", data: datas);
 
       await fetchData();
-
+      this.isbn = TextEditingController(text: '');
+      this.title = TextEditingController(text: '');
+      this.subtitle = TextEditingController(text: '');
+      this.author = TextEditingController(text: '');
+      this.published = TextEditingController(text: '');
+      this.publisher = TextEditingController(text: '');
+      this.page = TextEditingController(text: '');
+      this.description = TextEditingController(text: '');
+      this.website = TextEditingController(text: '');
       Get.back();
     } catch (e) {
       print(e);
