@@ -9,6 +9,7 @@ This project is a starting point for a Flutter application. Run :
 Flutter Pub Get in Terminal
 Only New Flutter Verison < 3.16.4
 With GetX
+
 For help getting started with Flutter development, view the online documentation, which offers tutorials, samples, guidance on mobile development, and a full API reference.
 
  <img src="https://github.com/Galuhdap/solusi_book_app/blob/main/assets/screen/splashScreen.png" width="200">
