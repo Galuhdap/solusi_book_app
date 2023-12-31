@@ -47,6 +47,12 @@ class AddBookView extends GetView {
                 contentPadding: EdgeInsets.only(left: 13),
               ),
               FieldAddDataWidget(
+                title: "Author",
+                textController: bookController.author,
+                typeInput: TextInputType.text,
+                contentPadding: EdgeInsets.only(left: 13),
+              ),
+              FieldAddDataWidget(
                 title: "Published",
                 textController: bookController.published,
                 sufixIcon: Icons.calendar_today,
@@ -81,35 +87,35 @@ class AddBookView extends GetView {
                 maxLine: 4,
                 contentPadding: EdgeInsets.only(left: 13, top: 13),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  await bookController.postBook(
-                      isbn: bookController.isbn.text,
-                      title: bookController.title.text,
-                      subtitle: bookController.subtitle.text,
-                      author: "jiko",
-                      published: bookController.date.toString(),
-                      publisher: bookController.publisher.text,
-                      page: bookController.page.text,
-                      description: bookController.description.text,
-                      website: bookController.website.text);
-                  await bookController.fetchData();
-                },
-                style: ElevatedButton.styleFrom(
-                    elevation: 4,
-                    backgroundColor: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    minimumSize: Size(0, 50)),
-                child: Center(
-                  child: Text(
-                    'ADD BOOK',
-                    style: TextStyle(
-                      color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 20),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await bookController.postBook(
+                        isbn: bookController.isbn.text,
+                        title: bookController.title.text,
+                        subtitle: bookController.subtitle.text,
+                        author: bookController.author.text,
+                        published: bookController.date.toString(),
+                        publisher: bookController.publisher.text,
+                        page: bookController.page.text,
+                        description: bookController.description.text,
+                        website: bookController.website.text);
+                    await bookController.fetchData();
+                  },
+                  style: ElevatedButton.styleFrom(
+                      elevation: 4,
+                      backgroundColor: Color(0xff171b36),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      minimumSize: Size(0, 50)),
+                  child: Center(
+                    child: Text(
+                      'ADD BOOK',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

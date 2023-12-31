@@ -1,14 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:sol_book/app/routes/app_pages.dart';
 
 import '../../../data/models/book_model.dart';
 import '../../../data/service/api_service.dart';
-import '../views/my_book_view.dart';
 
 class MyBookController extends GetxController {
   //TODO: Implement MyBookController
@@ -16,6 +12,7 @@ class MyBookController extends GetxController {
   TextEditingController isbn = TextEditingController();
   TextEditingController title = TextEditingController();
   TextEditingController subtitle = TextEditingController();
+  TextEditingController author = TextEditingController();
   TextEditingController published = TextEditingController();
   TextEditingController publisher = TextEditingController();
   TextEditingController page = TextEditingController();
@@ -28,6 +25,15 @@ class MyBookController extends GetxController {
   void onInit() {
     super.onInit();
     fetchData();
+    isbn = TextEditingController(text: '');
+    title = TextEditingController(text: '');
+    subtitle = TextEditingController(text: '');
+    author = TextEditingController(text: '');
+    published = TextEditingController(text: '');
+    publisher = TextEditingController(text: '');
+    page = TextEditingController(text: '');
+    description = TextEditingController(text: '');
+    website = TextEditingController(text: '');
   }
 
   Rxn<DateTime> date = Rxn<DateTime>();
@@ -109,7 +115,6 @@ class MyBookController extends GetxController {
 
       await fetchData();
 
-      // Get.offAll(MyBookView());
       Get.back();
     } catch (e) {
       print(e);
@@ -179,22 +184,14 @@ class MyBookController extends GetxController {
   @override
   void onClose() {
     // TODO: implement onClose
-    // isbn.clear();
-    // title.clear();
-    // subtitle.clear();
-    // published.clear();
-    // publisher.clear();
-    // page.clear();
-    // description.clear();
-    // website.clear();
-    isbn.dispose();
-    title.dispose();
-    subtitle.dispose();
-    published.dispose();
-    publisher.dispose();
-    page.dispose();
-    description.dispose();
-    website.dispose();
+    // isbn.dispose();
+    // title.dispose();
+    // subtitle.dispose();
+    // published.dispose();
+    // publisher.dispose();
+    // page.dispose();
+    // description.dispose();
+    // website.dispose();
     super.onClose();
   }
 }

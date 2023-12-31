@@ -31,6 +31,8 @@ class EditBookView extends GetView {
             TextEditingController(text: editBook.title);
         TextEditingController _subtitle =
             TextEditingController(text: editBook.subtitle);
+        TextEditingController _author =
+            TextEditingController(text: editBook.author);
         TextEditingController _published = TextEditingController(
           text: DateFormat('EEEE, dd MMMM yyyy', 'id_ID')
               .format(DateTime.parse(editBook.published.toString())),
@@ -64,6 +66,12 @@ class EditBookView extends GetView {
                 FieldAddDataWidget(
                   title: "Subtitle",
                   textController: _subtitle,
+                  typeInput: TextInputType.text,
+                  contentPadding: EdgeInsets.only(left: 13),
+                ),
+                FieldAddDataWidget(
+                  title: "Author",
+                  textController: _author,
                   typeInput: TextInputType.text,
                   contentPadding: EdgeInsets.only(left: 13),
                 ),
@@ -114,37 +122,37 @@ class EditBookView extends GetView {
                   maxLine: 4,
                   contentPadding: EdgeInsets.only(left: 13, top: 13),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    await bookController.editBook(
-                      book_id: editBook.id.toString(),
-                      isbn: _isbn.text,
-                      title: _title.text,
-                      subtitle: _subtitle.text,
-                      author: "jiko",
-                      published: editBook.published.toString(),
-                      publisher: _publisher.text,
-                      page: _page.text,
-                      description: _description.text,
-                      website: _website.text,
-                    );
-                    Get.back();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      elevation: 4,
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      minimumSize: Size(0, 50)),
-                  child: Center(
-                    child: Text(
-                      'ADD BOOK',
-                      style: TextStyle(
-                        color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      await bookController.editBook(
+                        book_id: editBook.id.toString(),
+                        isbn: _isbn.text,
+                        title: _title.text,
+                        subtitle: _subtitle.text,
+                        author: _author.text,
+                        published: editBook.published.toString(),
+                        publisher: _publisher.text,
+                        page: _page.text,
+                        description: _description.text,
+                        website: _website.text,
+                      );
+                      Get.back();
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 4,
+                        backgroundColor: Color(0xff171b36),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        minimumSize: Size(0, 50)),
+                    child: Center(
+                      child: Text(
+                        'EDIT BOOK',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

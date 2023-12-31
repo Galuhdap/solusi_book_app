@@ -66,19 +66,19 @@ class RegisterController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    name = TextEditingController();
-    email = TextEditingController();
-    password = TextEditingController();
-    confPassword = TextEditingController();
+    name = TextEditingController(text: '');
+    email = TextEditingController(text: '');
+    password = TextEditingController(text: '');
+    confPassword = TextEditingController(text: '');
   }
 
   @override
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    name.dispose();
-    email.dispose();
-    password.dispose();
-    confPassword.dispose();
+    // name.dispose();
+    // email.dispose();
+    // password.dispose();
+    // confPassword.dispose();
   }
 }

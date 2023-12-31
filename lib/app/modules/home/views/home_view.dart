@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -87,22 +85,9 @@ class HomeView extends GetView<HomeController> {
               builder: (controller) {
                 return controller.items.isEmpty
                     ? Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              "Waiting data ...",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            CircularProgressIndicator(),
-                          ],
-                        ),
-                      )
+                        child: Center(
+                        child: Text('Data Kosong'),
+                      ))
                     : Container(
                         height: size.width / 1,
                         child: ListView.builder(

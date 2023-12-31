@@ -59,15 +59,15 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    email = TextEditingController();
-    password = TextEditingController();
+    email = TextEditingController(text: '');
+    password = TextEditingController(text: '');
   }
 
   @override
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-    email.dispose();
-    password.dispose();
+    // email.dispose();
+    // password.dispose();
   }
 }

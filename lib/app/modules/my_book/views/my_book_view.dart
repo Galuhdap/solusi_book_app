@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -115,7 +114,7 @@ class MyBookView extends GetView<MyBookController> {
                           },
                           child: Container(
                             width: size.width / 10,
-                            height: size.height / 25,
+                            height: size.height / 26,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                             ),
